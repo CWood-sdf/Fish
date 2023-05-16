@@ -1,7 +1,7 @@
 ﻿var i = 0;
 var width, height;
 function Fish() {
-    this.pos = p.createVector(p.random(0, p.width), p.random(0, p.height));
+    this.pos = p.createVector(p.random(0, width), p.random(0, height));
     this.angle = p.random(0, 360);
     this.color = Fish.colors[i++ % Fish.colors.length];
     this.pidAng = {
@@ -89,17 +89,26 @@ Fish.prototype.draw = function () {
     this.velocity = this.startVel + (p.noise(this.z)) * this.startVel * 2;
     this.maxAngularVelocity = this.startAng + (p.noise(this.z)) * this.startAng;
 };
-
+var fishes;
 //Just dont look in here
 const s = pi => {
     p = pi;
-
     pi.setup = function () {
         pi.createCanvas(p.windowWidth, p.windowHeight);
+        width = p.windowWidth;
+        height = p.windowHeight;
         $("canvas").contextmenu(e => {
             e.preventDefault();
 
         });
+        //AKA 20 fish on my monitor
+        var fishCount = p.max(p.windowWidth * p.windowHeight / 1845120 * 20, 5);
+        console.log(p.windowHeight * p.windowWidth, p.windowHeight, p.windowWidth, fishCount);
+        fishes = [new Fish()];
+        while (fishes.length <= fishCount) {
+            fishes.push(new Fish());
+        }
+        p.angleMode(p.DEGREES);
     };
     Fish.colors = [
         p.color(0, 26, 255, 120),
@@ -110,12 +119,9 @@ const s = pi => {
         p.color(35, 135, 60, 120)
     ];
 
-    var fishes = [new Fish()];
-    while (fishes.length <= 5) {
-        fishes.push(new Fish());
-    }
+
     pi.draw = function () {
-        background(255);
+        p.background(255);
         for (var i in fishes) {
             fishes[i].draw();
         }

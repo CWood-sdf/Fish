@@ -1,3 +1,3 @@
-# Auton46F
+# Fish
 
-A random website for programming autons
+A bunch of fish doing fish things.

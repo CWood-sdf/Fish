@@ -102,7 +102,7 @@ const s = pi => {
 
         });
         //AKA 20 fish on my monitor
-        var fishCount = p.max(p.windowWidth * p.windowHeight / 1845120 * 20, 5);
+        var fishCount = p.max(p.windowWidth * p.windowHeight / 1783680 * 20, 5);
         console.log(p.windowHeight * p.windowWidth, p.windowHeight, p.windowWidth, fishCount);
         fishes = [new Fish()];
         while (fishes.length <= fishCount) {

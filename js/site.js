@@ -15,10 +15,10 @@ function Fish() {
         kD: 1
     };
     this.target = p.createVector(p.random(0, width), p.random(0, height));
-    if (this.pos.dist(this.target) < 50) {
+    if (this.pos.dist(this.target) < 150) {
         do {
             this.target = p.createVector(p.random(0, height), p.random(0, height));
-        } while (this.pos.dist(this.target) < 100);
+        } while (this.pos.dist(this.target) < 150);
     }
     this.z = p.random(0, 1);
     this.startVel = 0.8;
@@ -76,10 +76,10 @@ Fish.prototype.draw = function () {
     this.angle += angSpeed;
     this.pos.add(vel);
 
-    if (this.pos.dist(this.target) < 50) {
+    if (this.pos.dist(this.target) < 150) {
         do {
             this.target = p.createVector(p.random(0, width), p.random(0, height));
-        } while (this.pos.dist(this.target) < 100);
+        } while (this.pos.dist(this.target) < 150);
         this.pidAng.lastError = null;
     }
     p.strokeWeight(5);

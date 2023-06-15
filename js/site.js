@@ -2,7 +2,7 @@
 var width, height;
 function Fish() {
     this.pos = p.createVector(p.random(0, width), p.random(0, height));
-    this.angle = 0;//p.random(0, 360);
+    this.angle = p.random(0, 360);
     this.color = Fish.colors[i++ % Fish.colors.length];
     this.pidAng = {
         lastError: null,
@@ -14,12 +14,12 @@ function Fish() {
         kP: 1,
         kD: 1
     };
-    this.target = p.createVector(this.pos.x, this.pos.y + 70);//p.createVector(p.random(0, width), p.random(0, height));
-    /*if (this.pos.dist(this.target) < 150) {
+    this.target = p.createVector(p.random(0, width), p.random(0, height));
+    if (this.pos.dist(this.target) < 150) {
         do {
             this.target = p.createVector(p.random(0, height), p.random(0, height));
         } while (this.pos.dist(this.target) < 150);
-    }*/
+    }
     this.z = p.random(0, 1);
     this.startVel = 0.8;
     this.startAng = 1.0;

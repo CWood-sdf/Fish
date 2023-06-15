@@ -64,6 +64,9 @@ Fish.prototype.draw = function () {
 
     }
     speed *= this.pos.dist(this.target) < 150 ? p.min(p.max(1 - p.abs(errorAng) / 120, 0.2 + this.pos.dist(this.target) / 150 * 0.8), 1) : 1;
+    if(errorAng > 60 && this.dist(this.target) < 150){
+        speed *= (120 - errorAng) / 60;
+    }
 
     var dAng = errorAng - this.pidAng.lastError;
     dAng *= -1;
